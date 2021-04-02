@@ -48,6 +48,14 @@ public class Brin {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Brin{" +
+                "sequence='" + sequence + '\'' +
+                ", appariement='" + appariement + '\'' +
+                '}';
+    }
+
     public boolean egalite(Brin brin2, String methode) {
         if (methode.equals("forme")) {
             return this.parenthesages_egaux(brin2);

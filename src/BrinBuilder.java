@@ -10,30 +10,32 @@ public class BrinBuilder {
     }
 
     public static String appariement_corrected_without_extremities(int[] position_extremities, String appariement_to_cut){
-        StringBuilder cut_appariement = new StringBuilder(appariement_to_cut.length());
+        String cut_appariement = appariement_to_cut.substring(position_extremities[0],position_extremities[1]);
+        StringBuilder corrected_appariement = new StringBuilder(appariement_to_cut.length());
         for (int i = 0; i < appariement_to_cut.length(); i++) {
             char c = appariement_to_cut.charAt(i);
             if (c != '.'){
-                if (c == '(' || c == '[' || c == '{'){
-                    cut_appariement.append('(');
-                } else if (c == ')' || c == ']' || c == '}'){
-                    cut_appariement.append(')');
+                if (c == '(' || c == '[' || c == '{' || c == '<'){
+                    corrected_appariement.append('(');
+                } else if (c == ')' || c == ']' || c == '}' || c == '>'){
+                    corrected_appariement.append(')');
                 } else {
-                    cut_appariement.append('-');
+                    corrected_appariement.append('-');
                 }
             }
         }
-        return cut_appariement.substring(position_extremities[0],position_extremities[1]);
+        return corrected_appariement.toString();
     }
 
     public static String sequence_corrected_without_extremities(int[] position_extremities, String sequence_to_cut){
-        StringBuilder corrected_sequence = new StringBuilder(sequence_to_cut.length());
+        String cut_sequence = sequence_to_cut.substring(position_extremities[0],position_extremities[1]);
+        StringBuilder corrected_sequence = new StringBuilder(cut_sequence.length());
         for (int i = 0; i < sequence_to_cut.length(); i++) {
             if (sequence_to_cut.charAt(i) != '.'){
                 corrected_sequence.append(sequence_to_cut.charAt(i));
             }
         }
-        return corrected_sequence.toString().toUpperCase().substring(position_extremities[0],position_extremities[1]);
+        return corrected_sequence.toString().toUpperCase();
     }
 
     public static Brin lire_fichier(String filename) {
@@ -59,7 +61,7 @@ public class BrinBuilder {
         if(appariement != null && sequence != null){
             int[] positions_to_cut = first_and_last_parenthesis(appariement);
             sequence_corrigee = sequence_corrected_without_extremities(positions_to_cut,sequence);
-            appariement_corrigee = appariement_corrected_without_extremities(positions_to_cut, sequence);
+            appariement_corrigee = appariement_corrected_without_extremities(positions_to_cut, appariement);
         }
         else {
             System.out.println("Appariement et/ou sequence absent du fichier");

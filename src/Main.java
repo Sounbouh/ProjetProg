@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args){
-        System.out.println(BrinBuilder.lire_fichier("RF00005.stockholm.txt")+ "\n"+BrinBuilder.lire_fichier("RF00005.stockholm.txt"));
+        Brin test = BrinBuilder.lire_fichier("RF00005.stockholm.txt");
+        System.out.println(test.toString());
         Brin l = new Brin("ACGUGCCACGAUUCAACGUGGCACAG", "--((((((((------))))))))--");
         Brin l2 = new Brin("GGGUGCCACGAUUCAACGUGGCACAG","--((((((((------))))))))--");
         System.out.println(l.parenthesages_egaux(l2));
