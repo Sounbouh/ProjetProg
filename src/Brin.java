@@ -1,11 +1,7 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class Brin {
 
-    private String sequence;
-    private String appariement;
+    private final String sequence;
+    private final String appariement;
 
 
     public Brin(String sequence, String appariement){
@@ -28,8 +24,6 @@ public class Brin {
                 while (this.appariement.charAt(j) != ')') {
                     j--;
                 }
-                char a = this.sequence.charAt(i);
-                char b = this.sequence.charAt(j);
                 if (this.sequence.charAt(i) == 'A' && (this.sequence.charAt(j) == 'G' || this.sequence.charAt(j) == 'C' || this.sequence.charAt(j) == 'A')) {
                     return false;
                 } else if (this.sequence.charAt(i) == 'U' && (this.sequence.charAt(j) == 'G' || this.sequence.charAt(j) == 'C' || this.sequence.charAt(j) == 'U')) {

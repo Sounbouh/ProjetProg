@@ -3,36 +3,38 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class BrinBuilder {
-    public static int[] first_and_last_parenthesis(String appariement){
+    public static int[] firstAndLastParenthesis(String appariement){
         int first = appariement.indexOf('(');
         int last = appariement.lastIndexOf(')');
         return new int[]{first, last};
     }
 
-    public static String appariement_corrected_without_extremities(int[] position_extremities, String appariement_to_cut){
-        String cut_appariement = appariement_to_cut.substring(position_extremities[0],position_extremities[1]);
-        StringBuilder corrected_appariement = new StringBuilder(appariement_to_cut.length());
-        for (int i = 0; i < appariement_to_cut.length(); i++) {
-            char c = appariement_to_cut.charAt(i);
+    public static String cutExtremities(int[] positionExtremities, String elementBrin){
+        return elementBrin.substring(positionExtremities[0],positionExtremities[1]);
+    }
+
+    public static String appariement_corrected_without_extremities(String appariementToCorrect){
+        StringBuilder correctedAppariement = new StringBuilder(appariementToCorrect.length());
+        for (int i = 0; i < appariementToCorrect.length(); i++) {
+            char c = appariementToCorrect.charAt(i);
             if (c != '.'){
                 if (c == '(' || c == '[' || c == '{' || c == '<'){
-                    corrected_appariement.append('(');
+                    correctedAppariement.append('(');
                 } else if (c == ')' || c == ']' || c == '}' || c == '>'){
-                    corrected_appariement.append(')');
+                    correctedAppariement.append(')');
                 } else {
-                    corrected_appariement.append('-');
+                    correctedAppariement.append('-');
                 }
             }
         }
-        return corrected_appariement.toString();
+        return correctedAppariement.toString();
     }
 
-    public static String sequence_corrected_without_extremities(int[] position_extremities, String sequence_to_cut){
-        String cut_sequence = sequence_to_cut.substring(position_extremities[0],position_extremities[1]);
-        StringBuilder corrected_sequence = new StringBuilder(cut_sequence.length());
-        for (int i = 0; i < sequence_to_cut.length(); i++) {
-            if (sequence_to_cut.charAt(i) != '.'){
-                corrected_sequence.append(sequence_to_cut.charAt(i));
+    public static String sequence_corrected_without_extremities(String sequence_to_correct){
+        StringBuilder corrected_sequence = new StringBuilder(sequence_to_correct.length());
+        for (int i = 0; i < sequence_to_correct.length(); i++) {
+            if (sequence_to_correct.charAt(i) != '.'){
+                corrected_sequence.append(sequence_to_correct.charAt(i));
             }
         }
         return corrected_sequence.toString().toUpperCase();
@@ -59,14 +61,14 @@ public class BrinBuilder {
             System.exit(1);
         }
         if(appariement != null && sequence != null){
-            int[] positions_to_cut = first_and_last_parenthesis(appariement);
-            sequence_corrigee = sequence_corrected_without_extremities(positions_to_cut,sequence);
-            appariement_corrigee = appariement_corrected_without_extremities(positions_to_cut, appariement);
-        }
-        else {
+            sequence_corrigee = sequence_corrected_without_extremities(sequence);
+            appariement_corrigee = appariement_corrected_without_extremities(appariement);
+        } else {
             System.out.println("Appariement et/ou sequence absent du fichier");
+            System.exit(1);
         }
-
-        return new Brin(sequence_corrigee, appariement_corrigee);
+        int[] position_extremities = firstAndLastParenthesis(appariement_corrigee);
+        return new Brin(cutExtremities(position_extremities, sequence_corrigee),
+                cutExtremities(position_extremities, appariement_corrigee));
     }
 }
