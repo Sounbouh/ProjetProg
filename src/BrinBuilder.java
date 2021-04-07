@@ -40,6 +40,12 @@ public class BrinBuilder {
         return corrected_sequence.toString().toUpperCase();
     }
 
+    public static Brin input_brin(String sequence, String appariement){
+        int[] position_extremities = firstAndLastParenthesis(appariement);
+        return new Brin(cutExtremities(position_extremities, sequence),
+                cutExtremities(position_extremities, appariement));
+    }
+
     public static Brin lire_fichier(String filename) {
         //Methode qui donne à partir de fichier en format Stockholm la séquence consensus et l'appariement correspondant
         String sequence= null;
@@ -67,8 +73,6 @@ public class BrinBuilder {
             System.out.println("Appariement et/ou sequence absent du fichier");
             System.exit(1);
         }
-        int[] position_extremities = firstAndLastParenthesis(appariement_corrigee);
-        return new Brin(cutExtremities(position_extremities, sequence_corrigee),
-                cutExtremities(position_extremities, appariement_corrigee));
+        return input_brin(sequence_corrigee,appariement_corrigee);
     }
 }

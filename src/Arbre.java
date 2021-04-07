@@ -4,9 +4,9 @@ import java.util.List;
 public class Arbre {
     private String type;
     private String label;
+    private List<Arbre> fils;
 
-    public Arbre(String noeud, String fils, String label){
-        String fils1 = fils;
+    public Arbre(String noeud, String label){
         this.label = label;
         fils = new ArrayList<>();
     }
