@@ -63,6 +63,19 @@ public class Tree {
         }
         return parenthesis.toString();
     }
+    public String treeToSequence() {
+        StringBuilder sequence = new StringBuilder();
+        for (Tree node : this.children) {
+            if (Arrays.asList("A", "U", "G", "C").contains(node.label)) {
+                sequence.append(node.label);
+            } else {
+                sequence.append(node.label.charAt(0));
+                sequence.append(node.treeToSequence());
+                sequence.append(node.label.charAt(1));
+            }
+        }
+        return sequence.toString();
+    }
 
     public void affichageArbre() {
         for (Tree noeud : this.children) {
@@ -73,26 +86,38 @@ public class Tree {
             }
         }
     }
-    public int numberOfNodes(){
+
+    public int numberOfNodes() {
         int number = this.children.size();
-        if (this.children.size()!=0){
-            for (Tree node: this.children) {
+        if (this.children.size() != 0) {
+            for (Tree node : this.children) {
                 number += node.numberOfNodes();
             }
         }
         return number;
     }
-    public boolean egalityTest(Tree toCompare) {
-        if (this.numberOfNodes()== toCompare.numberOfNodes() && this.children.size()==toCompare.children.size()){
+
+    public boolean egalityTest(Tree toCompare, boolean UseSequence) {
+        int numberOfNodesTree = this.numberOfNodes();
+        if (this.label != null){
+            numberOfNodesTree +=1;
+        }
+        int b = this.children.size();
+        int c = toCompare.numberOfNodes();
+        int d = toCompare.children.size();
+        if (numberOfNodesTree == toCompare.numberOfNodes() && this.children.size() == toCompare.children.size()) {
             for (int i = 0; i < this.children.size(); i++) {
                 Tree node = this.children.get(i);
                 Tree nodeToCompare = toCompare.children.get(i);
-                if (!node.egalityTest(nodeToCompare)){
+                if (!node.egalityTest(nodeToCompare, UseSequence)) {
+                    return false;
+                }
+                if (UseSequence && !node.label.equals(nodeToCompare.label)) {
                     return false;
                 }
             }
             return true;
-        } else{
+        } else {
             return false;
         }
     }
@@ -110,53 +135,16 @@ public class Tree {
 //    }
 
     public boolean presentInTree(Tree motif, boolean UseSequence) {
-        if (!UseSequence) {
-            if (this.egalityTest(motif)){
-                return true;
-                }
-            else {
-                for (Tree node: this.children) {
-                    if (node.presentInTree(node,UseSequence)){
-                        return true;
-                    }
-                }
-            }
-        }
-//                int i =0;
-//                while (this.children.get(i).label.equals(motif.children.get(i).label)){
-//                    i++;
-//                }
-//            }
-//            if (this.egalityTest(motif)){
-//                return true;
-//            } else {
-//                for (Tree node : this.children) {
-//                    if (node.egalityTest(motif)) {
-//                        return true;
-//                    } else {
-//                        return node.presentInTree(motif, UseSequence);
-//                    }
-//                }
-//            }
-//        }
-//        else {
-//            if (this.children.size() == motif.children.size()){
-//                int i = 0;
-//                while (i<this.children.size() && !this.children.get(i).presentInTree(motif.children.get(i),UseSequence)){
-//                    i+=1;
-//                }
-//            return this.children.get(i).presentInTree(motif.children.get(i),UseSequence);
-//            } else {
-//                for (Tree node: this.children) {
-//
-//                }
-//            }
-//        }
-        return false;
+        Brin RNA = new Brin(this.treeToSequence(),this.treeToParenthesis());
+        Brin motifRNA = new Brin(motif.treeToSequence(), motif.treeToParenthesis());
+        return RNA.contains(motifRNA, UseSequence);
     }
 
-//    public Tree biggestSubTree(Tree toCompare) {
-//
-//    }
+    public Tree biggestTreeInCommon(Tree tree2){
+        Brin RNA = new Brin(this.treeToSequence(),this.treeToParenthesis());
+        Brin RNA2 = new Brin(tree2.treeToSequence(), tree2.treeToParenthesis());
+        Brin biggestRNA =  RNA.biggestSubstrand(RNA2);
+        return parenthesis_to_tree(biggestRNA.appariement, biggestRNA.sequence);
+    }
 }
 

@@ -4,7 +4,7 @@ public class Brin {
     final String appariement;
 
 
-    public Brin(String sequence, String appariement){
+    public Brin(String sequence, String appariement) {
         this.sequence = sequence;
         this.appariement = appariement;
     }
@@ -62,46 +62,100 @@ public class Brin {
         /*problème : si une des sequences bien plus longues ==> comparaison que partielle*/
         int i = 0;
         int j = 0;
-        while (this.appariement.charAt(i)!='('){
+        while (this.appariement.charAt(i) != '(') {
             i++;
         }
-        while (brin.appariement.charAt(j) != '('){
+        while (brin.appariement.charAt(j) != '(') {
             j++;
         }
-        while (i<this.appariement.length() && j>i){
-            while (j<brin.appariement.length()){
-                if (this.appariement.charAt(i) == brin.appariement.charAt(j)){
-                    i++;
-                    j++;
-                } else {
-                   return false;
-                }
+        while (i < this.appariement.length() && j < brin.appariement.length()) {
+            if (this.appariement.charAt(i) == brin.appariement.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                return false;
             }
         }
         return true;
     }
 
-    public boolean sequences_et_formes_egales(Brin brin2){
+    public boolean sequences_et_formes_egales(Brin brin2) {
         int i = 0;
         int j = 0;
-        while (this.appariement.charAt(i)== '-'){
+        while (this.appariement.charAt(i) == '-') {
             i++;
         }
-        while (brin2.appariement.charAt(j) == '-'){
+        while (brin2.appariement.charAt(j) == '-') {
             j++;
         }
-        while (i<this.appariement.length()&& j>i){
-            while (j<brin2.appariement.length()){
-                if (this.appariement.charAt(i) == brin2.appariement.charAt(j) && this.sequence.charAt(i)==brin2.sequence.charAt(j)){
-                    i++;
-                    j++;
-                } else {
-                    return false;
-                }
+        while (i < this.appariement.length() && j < brin2.appariement.length()) {
+            if (this.appariement.charAt(i) == brin2.appariement.charAt(j) && this.sequence.charAt(i) == brin2.sequence.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                return false;
             }
         }
         return true;
     }
 
+    public boolean contains(Brin motif, boolean useSequence) {
+        if (this.appariement.contains(motif.appariement)) {
+            if (!useSequence) {
+                return true;
+            } else {
+                return this.appariement.indexOf(motif.appariement) == this.sequence.indexOf(motif.sequence);
+            }
 
+        }
+        return false;
+    }
+
+    public Brin biggestSubstrand(Brin strandToCompare){
+        if (this.contains(strandToCompare, true)){
+            return this;
+        } else{
+            char[] strandSeqChar = this.sequence.toCharArray();
+            char[] strandParenthesisChar = this.appariement.toCharArray();
+            char[] strandToCompareSeqChar = strandToCompare.sequence.toCharArray();
+            char[] strandToCompareParenthesisChar = strandToCompare.appariement.toCharArray();
+            int strandlength = strandSeqChar.length;
+            int strandToComparelength = strandToCompareSeqChar.length;
+            int[][] cache = new int[strandlength+1][strandToComparelength+1];
+            int max = 0;
+            int row =0;
+            int col = 0;
+            for (int i = 0; i<strandlength; i++){
+                for (int j = 0; j < strandToComparelength; j++) {
+                    if (i ==0 || j == 0){
+                        cache[i][j] = 0;
+                    }
+                    else if (strandSeqChar[i-1]==strandToCompareSeqChar[j-1]
+                            && strandParenthesisChar[i-1]==strandToCompareParenthesisChar[j-1]){
+                        cache[i][j] = cache[i-1][j-1] + 1;
+                        if (cache[i][j]>max){
+                            max = cache[i][j];
+                            row = i;
+                            col = j;
+                        }
+                    }else {
+                        cache[i][j] = 0;
+                    }
+                }
+            }
+            if (max == 0){
+                System.out.println("No common substring");
+                return null;
+            }
+            StringBuilder biggestSubSequence = new StringBuilder();
+            StringBuilder biggestSubParenthesis = new StringBuilder();
+            while (cache[row][col] !=0){
+                biggestSubSequence.append(strandSeqChar[row - 1]);
+                biggestSubParenthesis.append(strandParenthesisChar[row - 1]);
+                row --;
+                col --;
+            }
+            return new Brin(biggestSubSequence.reverse().toString(), biggestSubParenthesis.reverse().toString());
+        }
+    }
 }
