@@ -1,7 +1,7 @@
 public class Brin {
 
-    private final String sequence;
-    private final String appariement;
+    final String sequence;
+    final String appariement;
 
 
     public Brin(String sequence, String appariement){
@@ -68,7 +68,7 @@ public class Brin {
         while (brin.appariement.charAt(j) != '('){
             j++;
         }
-        while (i<this.appariement.length()){
+        while (i<this.appariement.length() && j>=i){
             while (j<brin.appariement.length()){
                 if (this.appariement.charAt(i) == brin.appariement.charAt(j)){
                     i++;
