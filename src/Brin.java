@@ -68,7 +68,7 @@ public class Brin {
         while (brin.appariement.charAt(j) != '('){
             j++;
         }
-        while (i<this.appariement.length() && j>=i){
+        while (i<this.appariement.length() && j>i){
             while (j<brin.appariement.length()){
                 if (this.appariement.charAt(i) == brin.appariement.charAt(j)){
                     i++;
@@ -90,7 +90,7 @@ public class Brin {
         while (brin2.appariement.charAt(j) == '-'){
             j++;
         }
-        while (i<this.appariement.length()){
+        while (i<this.appariement.length()&& j>i){
             while (j<brin2.appariement.length()){
                 if (this.appariement.charAt(i) == brin2.appariement.charAt(j) && this.sequence.charAt(i)==brin2.sequence.charAt(j)){
                     i++;

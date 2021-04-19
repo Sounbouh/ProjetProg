@@ -73,40 +73,72 @@ public class Tree {
             }
         }
     }
-
-    public boolean egalityTest(Tree toCompare) {
-        if (this.label.equals(toCompare.label)) {
-            if (this.children == null && toCompare.children == null) {
-                return true;
-            } else if (this.children != null && toCompare.children != null) {
-                if (this.children.size() == toCompare.children.size()){
-                    for (int i = 0; i < this.children.size(); i++) {
-                        if (this.children.get(i).label.equals(toCompare.children.get(i).label)){
-                            if (!this.children.get(i).egalityTest(toCompare.children.get(i))){
-                                return false;
-                            }
-                        }
-                    }
-                }
+    public int numberOfNodes(){
+        int number = this.children.size();
+        if (this.children.size()!=0){
+            for (Tree node: this.children) {
+                number += node.numberOfNodes();
             }
         }
-        return false;
+        return number;
+    }
+    public boolean egalityTest(Tree toCompare) {
+        if (this.numberOfNodes()== toCompare.numberOfNodes() && this.children.size()==toCompare.children.size()){
+            for (int i = 0; i < this.children.size(); i++) {
+                Tree node = this.children.get(i);
+                Tree nodeToCompare = toCompare.children.get(i);
+                if (!node.egalityTest(nodeToCompare)){
+                    return false;
+                }
+            }
+            return true;
+        } else{
+            return false;
+        }
     }
 
+//    public ArrayList<Tree> allLeaves (){
+//        ArrayList<Tree> leaves = new ArrayList<>();
+//        for (Tree node: this.children) {
+//            if (node.children.size() == 0){
+//                leaves.add(node);
+//            } else {
+//                leaves.addAll(node.allLeaves());
+//            }
+//        }
+//        return leaves;
+//    }
+
     public boolean presentInTree(Tree motif, boolean UseSequence) {
-        if (UseSequence) {
+        if (!UseSequence) {
             if (this.egalityTest(motif)){
                 return true;
-            } else {
-                for (Tree node : this.children) {
-                    if (node.egalityTest(motif)) {
+                }
+            else {
+                for (Tree node: this.children) {
+                    if (node.presentInTree(node,UseSequence)){
                         return true;
-                    } else {
-                        return node.presentInTree(motif, UseSequence);
                     }
                 }
             }
         }
+//                int i =0;
+//                while (this.children.get(i).label.equals(motif.children.get(i).label)){
+//                    i++;
+//                }
+//            }
+//            if (this.egalityTest(motif)){
+//                return true;
+//            } else {
+//                for (Tree node : this.children) {
+//                    if (node.egalityTest(motif)) {
+//                        return true;
+//                    } else {
+//                        return node.presentInTree(motif, UseSequence);
+//                    }
+//                }
+//            }
+//        }
 //        else {
 //            if (this.children.size() == motif.children.size()){
 //                int i = 0;
