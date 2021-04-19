@@ -1,43 +1,36 @@
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class Arbre {
-//    private String type;
-//    private String label;
-//    private List<Arbre> fils;
-//
-//    public Arbre(String noeud, String label){
-//        this.label = label;
-//        fils = new ArrayList<>();
-//    }
-//
-//    /*public Arbre(List<String> fils){
-//        fils = new ArrayList<>();
-//        this.tokens = tokens;
-//    }*/
-//
-//    //Type of node ? je suppose que ça peut être intéressant si on veut comparer des sous arbres
-//    public String getType(){
-//        return type;
-//    }
-//    public void setType(String type){
-//        this.type = type;
-//    }
-//
-//    //Returns all of the labels for this node and oll of its children
-//    public List<String> yield(ArrayList<String> strings){
-//        return yield(new ArrayList<String>());
-//    }
-//
-//    //Retourne liste des labels for the node
-//
-//    private List<String> yield(List labels){
-//        labels.add(label);
-//        for(Arbre t : fils()){
-//            labels.addAll(t.yield());
-//        }
-//        return labels;
-//    }
-//
-//
-//}
+import java.util.ArrayList;
+
+public class Arbre {
+    public ArrayList<Arbre> parenthesage;
+    public String lienVerslePere;
+    public String noeud;
+
+    //Noeuds arbre
+    static class Noeud {
+        int data;
+        Noeud gauche, droite;
+        Noeud (int data)
+        {
+            this.data = data;
+            this.gauche = null;
+            this.droite = null;
+        }
+    }
+
+    //fonction pour insérer noeuds dans ordre
+    public Noeud insertionNiveauArbre (int[] arr, Noeud racine, int i){
+
+        if (i<arr.length){
+            Noeud temp = new Noeud (arr[i]);
+            racine = temp;
+
+            racine.gauche = insertionNiveauArbre(arr, racine.gauche, 2*i +1);
+            racine.droite = insertionNiveauArbre(arr, racine.droite, 2*i+2);
+        }
+
+        return racine;
+    }
+
+}
+
+
