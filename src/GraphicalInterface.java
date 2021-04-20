@@ -1,3 +1,7 @@
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -28,69 +32,105 @@ public class GraphicalInterface extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
+        jFileChooser1 = new javax.swing.JFileChooser();
+        EnterSequence1 = new javax.swing.JTextField();
+        EnterSequence2 = new javax.swing.JTextField();
+        SubmitSequence1 = new javax.swing.JButton();
+        SubmitSequence2 = new javax.swing.JButton();
+        EnterParenthesis1 = new javax.swing.JTextField();
+        SubmitParenthesis1 = new javax.swing.JButton();
+        EnterParenthesis2 = new javax.swing.JTextField();
+        SubmitParenthesis2 = new javax.swing.JButton();
+        SubmitFile1 = new javax.swing.JButton();
+        SubmitFile2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        BiggestSubtreeLauncher = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        TxtDisplayRNA1 = new javax.swing.JLabel();
+        TxtDisplayRNA2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
+        TxtDisplayTree1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
+        TxtDisplayTree2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton8 = new javax.swing.JButton();
+        choiceOfElementToCompare = new javax.swing.JCheckBox();
+        PatternResearchLaunchingButton = new javax.swing.JButton();
+        Title = new javax.swing.JLabel();
+        nameOfFile2 = new javax.swing.JLabel();
+        nameOfFile1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jTextArea5.setColumns(20);
+        jTextArea5.setRows(5);
+        jScrollPane5.setViewportView(jTextArea5);
 
-        jTextField1.setText("Enter sequence1");
-
-        jTextField2.setText("Enter sequence 2");
-
-        jButton1.setText("Submit");
-
-        jButton2.setText("Submit");
-
-        jTextField3.setText("Enter parenthesing1");
-
-        jButton3.setText("Submit");
-
-        jTextField4.setText("Enter parenthesing2");
-
-        jButton4.setText("Submit");
-
-        jButton5.setText("Use file");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jFileChooser1ActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Use file");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        EnterSequence1.setText("Enter sequence1");
+
+        EnterSequence2.setText("Enter sequence 2");
+
+        SubmitSequence1.setText("Submit");
+        SubmitSequence1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitSequence1ActionPerformed(evt);
+            }
+        });
+
+        SubmitSequence2.setText("Submit");
+        SubmitSequence2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitSequence2ActionPerformed(evt);
+            }
+        });
+
+        EnterParenthesis1.setText("Enter parenthesing1");
+
+        SubmitParenthesis1.setText("Submit");
+        SubmitParenthesis1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitParenthesis1ActionPerformed(evt);
+            }
+        });
+
+        EnterParenthesis2.setText("Enter parenthesing2");
+
+        SubmitParenthesis2.setText("Submit");
+        SubmitParenthesis2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitParenthesis2ActionPerformed(evt);
+            }
+        });
+
+        SubmitFile1.setText("Use file");
+        SubmitFile1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitFile1ActionPerformed(evt);
+            }
+        });
+
+        SubmitFile2.setText("Use file");
 
         jLabel1.setText("RNA 1");
 
         jLabel2.setText("RNA 2");
 
-        jButton7.setText("Biggest subtree in common");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        BiggestSubtreeLauncher.setText("Biggest subtree in common");
+        BiggestSubtreeLauncher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                BiggestSubtreeLauncherActionPerformed(evt);
             }
         });
 
@@ -98,100 +138,110 @@ public class GraphicalInterface extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jLabel3.setText("Display RNA1");
+        TxtDisplayRNA1.setText("Display RNA1");
 
-        jLabel4.setText("Display RNA2");
+        TxtDisplayRNA2.setText("Display RNA2");
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
         jScrollPane3.setViewportView(jTextArea3);
 
-        jLabel5.setText("Display RNA1 tree");
+        TxtDisplayTree1.setText("Display RNA1 tree");
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jLabel6.setText("Display RNA2 tree");
+        TxtDisplayTree2.setText("Display RNA2 tree");
 
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
         jScrollPane4.setViewportView(jTextArea4);
 
-        jCheckBox1.setText("Just parenthesing");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        choiceOfElementToCompare.setText("Just parenthesing");
+        choiceOfElementToCompare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                choiceOfElementToCompareActionPerformed(evt);
             }
         });
 
-        jButton8.setText("RNA2 pattern present in RNA1 ");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        PatternResearchLaunchingButton.setText("RNA2 pattern present in RNA1 ");
+        PatternResearchLaunchingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                PatternResearchLaunchingButtonActionPerformed(evt);
             }
         });
+
+        Title.setText("RNA secondary structure comparison");
+
+        nameOfFile2.setText("No file choosen");
+
+        nameOfFile1.setText("No file choosen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(EnterParenthesis1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SubmitParenthesis1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1)
+                                .addGap(28, 28, 28))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(28, 28, 28))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(EnterSequence1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(SubmitSequence1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SubmitFile1)
+                            .addComponent(TxtDisplayRNA1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nameOfFile1)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel4)
-                                        .addGap(79, 79, 79))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 480, Short.MAX_VALUE)
+                                .addComponent(EnterSequence2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(SubmitSequence2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(EnterParenthesis2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(SubmitParenthesis2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton6)
-                            .addComponent(jLabel2))
-                        .addGap(109, 109, 109))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(98, 98, 98)
+                                .addComponent(Title)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nameOfFile2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtDisplayRNA2)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(SubmitFile2)
+                                .addComponent(jLabel2)))
+                        .addGap(104, 104, 104))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addComponent(jLabel5)
+                        .addComponent(TxtDisplayTree1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
+                        .addComponent(TxtDisplayTree2)
                         .addGap(90, 90, 90))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -201,9 +251,9 @@ public class GraphicalInterface extends javax.swing.JFrame {
                         .addGap(47, 47, 47))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(329, 329, 329)
-                .addComponent(jButton8)
+                .addComponent(PatternResearchLaunchingButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(choiceOfElementToCompare)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
@@ -213,80 +263,131 @@ public class GraphicalInterface extends javax.swing.JFrame {
                 .addGap(47, 47, 47))
             .addGroup(layout.createSequentialGroup()
                 .addGap(336, 336, 336)
-                .addComponent(jButton7)
+                .addComponent(BiggestSubtreeLauncher)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Title)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(EnterSequence1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EnterSequence2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SubmitSequence1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SubmitSequence2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(EnterParenthesis1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EnterParenthesis2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SubmitParenthesis1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SubmitParenthesis2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(SubmitFile1)
+                    .addComponent(SubmitFile2)
+                    .addComponent(nameOfFile2)
+                    .addComponent(nameOfFile1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(TxtDisplayRNA1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(TxtDisplayRNA2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)
+                        .addComponent(TxtDisplayTree1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(TxtDisplayTree2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jCheckBox1))
+                    .addComponent(PatternResearchLaunchingButton)
+                    .addComponent(choiceOfElementToCompare))
                 .addGap(28, 28, 28)
-                .addComponent(jButton7)
+                .addComponent(BiggestSubtreeLauncher)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void SubmitFile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitFile1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_SubmitFile1ActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void choiceOfElementToCompareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choiceOfElementToCompareActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_choiceOfElementToCompareActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void PatternResearchLaunchingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatternResearchLaunchingButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_PatternResearchLaunchingButtonActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void BiggestSubtreeLauncherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BiggestSubtreeLauncherActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_BiggestSubtreeLauncherActionPerformed
+
+    private void SubmitSequence1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitSequence1ActionPerformed
+        try{
+            String RNA_sequence1 = this.EnterSequence1.getText();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Bad RNA1 sequence","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_SubmitSequence1ActionPerformed
+
+    private void SubmitParenthesis1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitParenthesis1ActionPerformed
+        try{
+            String RNA_parenthesis1 = this.EnterParenthesis1.getText();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Bad RNA1 parenthesis","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_SubmitParenthesis1ActionPerformed
+
+    private void SubmitSequence2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitSequence2ActionPerformed
+        try{
+            String RNA_sequence2 = this.EnterSequence2.getText();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Bad RNA2 sequence","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_SubmitSequence2ActionPerformed
+
+    private void SubmitParenthesis2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitParenthesis2ActionPerformed
+        try{
+            String RNA_parenthesis2 = this.EnterParenthesis2.getText();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Bad RNA2 parenthesis","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_SubmitParenthesis2ActionPerformed
+
+    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
+        int returnVal = fileChooser.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file =
+            
+        }
+    }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,34 +425,40 @@ public class GraphicalInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BiggestSubtreeLauncher;
+    private javax.swing.JTextField EnterParenthesis1;
+    private javax.swing.JTextField EnterParenthesis2;
+    private javax.swing.JTextField EnterSequence1;
+    private javax.swing.JTextField EnterSequence2;
+    private javax.swing.JButton PatternResearchLaunchingButton;
+    private javax.swing.JButton SubmitFile1;
+    private javax.swing.JButton SubmitFile2;
+    private javax.swing.JButton SubmitParenthesis1;
+    private javax.swing.JButton SubmitParenthesis2;
+    private javax.swing.JButton SubmitSequence1;
+    private javax.swing.JButton SubmitSequence2;
+    private javax.swing.JLabel Title;
+    private javax.swing.JLabel TxtDisplayRNA1;
+    private javax.swing.JLabel TxtDisplayRNA2;
+    private javax.swing.JLabel TxtDisplayTree1;
+    private javax.swing.JLabel TxtDisplayTree2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox choiceOfElementToCompare;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JLabel nameOfFile1;
+    private javax.swing.JLabel nameOfFile2;
     // End of variables declaration//GEN-END:variables
 }
