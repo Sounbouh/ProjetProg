@@ -9,9 +9,11 @@ public class Brin {
         this.appariement = appariement;
     }
 
-
+    //Méthode qui permet de vérifier que les séquences ARN et d'appariement correspondent
     public boolean verification_appariement() {
-        if (this.sequence.length() == this.appariement.length()) {
+        if (this.sequence.length() == this.appariement.length()) { /*On s'assure que les séquences ont la même taille */
+            /*On prend seulement en compte les premiers et derniers nucléotides non appariés et
+            on compare seulement à l’intérieur du premier couple de parenthèses*/
             int i = this.appariement.indexOf('(');
             int j = this.appariement.lastIndexOf(')');
             while (i < this.appariement.length() && j >= i) {
@@ -24,6 +26,7 @@ public class Brin {
                 while (this.appariement.charAt(j) != ')') {
                     j--;
                 }
+                /*On vérifie que chaque couple de parenthèses correspond à un appariement Watson-Crick.*/
                 if (this.sequence.charAt(i) == 'A' && (this.sequence.charAt(j) == 'G' || this.sequence.charAt(j) == 'C' || this.sequence.charAt(j) == 'A')) {
                     return false;
                 } else if (this.sequence.charAt(i) == 'U' && (this.sequence.charAt(j) == 'G' || this.sequence.charAt(j) == 'C' || this.sequence.charAt(j) == 'U')) {
@@ -49,7 +52,7 @@ public class Brin {
                 ", appariement='" + appariement + '\'' +
                 '}';
     }
-
+    //Méthode qui permet de vérifier que les structures secondaires sont les mêmes entre deux ARN
     public boolean egalite(Brin brin2, String methode) {
         if (methode.equals("forme")) {
             return this.parenthesages_egaux(brin2);
@@ -58,8 +61,9 @@ public class Brin {
         }
     }
 
+    //Méthode qui permet de vérifier que deux séquences ont même séquences de parenthésages (ou même forme)
     public boolean parenthesages_egaux(Brin brin) {
-        /*problème : si une des sequences bien plus longues ==> comparaison que partielle*/
+        /*problème : si une des sequences bien plus longue ==> comparaison que partielle*/
         int i = 0;
         int j = 0;
         while (this.appariement.charAt(i) != '(') {
@@ -79,6 +83,7 @@ public class Brin {
         return true;
     }
 
+    //Méthode qui permet de vérifier que deux séqueces ont même séquence consensus et même forme
     public boolean sequences_et_formes_egales(Brin brin2) {
         int i = 0;
         int j = 0;
@@ -99,6 +104,7 @@ public class Brin {
         return true;
     }
 
+    //Méthode qui permet de trouver si un arbre est présent comme motif dans un autre arbre
     public boolean contains(Brin motif, boolean useSequence) {
         if (this.appariement.contains(motif.appariement)) {
             if (!useSequence) {

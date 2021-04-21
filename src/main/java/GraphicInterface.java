@@ -1,7 +1,4 @@
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
 
 //public class GraphicInterface extends JFrame implements ActionListener {
 //    /* saisie de structures secondaires en string*/

@@ -13,6 +13,7 @@ public class BrinBuilder {
         return elementBrin.substring(positionExtremities[0],positionExtremities[1]);
     }
 
+    //Méthode qui modifie les notations de la séquence d'appariement pour ne garder que des parenthèses et des tirets
     public static String appariement_corrected_without_extremities(String appariementToCorrect){
         StringBuilder correctedAppariement = new StringBuilder(appariementToCorrect.length());
         for (int i = 0; i < appariementToCorrect.length(); i++) {
@@ -30,6 +31,7 @@ public class BrinBuilder {
         return correctedAppariement.toString();
     }
 
+    //Méthode qui retire les points de la séquence consensus et l'écrit en majuscule
     public static String sequence_corrected_without_extremities(String sequence_to_correct){
         StringBuilder corrected_sequence = new StringBuilder(sequence_to_correct.length());
         for (int i = 0; i < sequence_to_correct.length(); i++) {
@@ -46,8 +48,8 @@ public class BrinBuilder {
                 cutExtremities(position_extremities, appariement));
     }
 
+    //Methode qui donne à partir de fichier en format Stockholm la séquence consensus et l'appariement correspondant
     public static Brin lire_fichier(String filename) {
-        //Methode qui donne à partir de fichier en format Stockholm la séquence consensus et l'appariement correspondant
         String sequence= null;
         String appariement = null;
         String sequence_corrigee = null;
