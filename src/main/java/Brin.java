@@ -117,6 +117,7 @@ public class Brin {
         return false;
     }
 
+    //Méthode permettant de trouver le plus grand sous-arbre commun à deux brins d'ARN
     public Brin biggestSubstrand(Brin strandToCompare){
         if (this.contains(strandToCompare, true)){
             return this;
