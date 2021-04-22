@@ -10,7 +10,7 @@ public class BrinBuilder {
     }
 
     public static String cutExtremities(int[] positionExtremities, String elementBrin){
-        return elementBrin.substring(positionExtremities[0],positionExtremities[1]);
+        return elementBrin.substring(positionExtremities[0],positionExtremities[1]+1);
     }
 
     //Méthode qui modifie les notations de la séquence d'appariement pour ne garder que des parenthèses et des tirets
@@ -43,9 +43,20 @@ public class BrinBuilder {
     }
 
     public static Brin input_brin(String sequence, String appariement){
+        /**
+         * Methode qui permet de couper les extrémites non appariées de la séquence et le parenthésage
+         * @param sequence : sequence de l'ARN
+         * @param appariement : parenthésage de la structure secondaire de l'ARN
+         * @return Brin contenant séquence et parenthésage tronqué
+         */
         int[] position_extremities = firstAndLastParenthesis(appariement);
-        return new Brin(cutExtremities(position_extremities, sequence),
+        Brin corrected = new Brin(cutExtremities(position_extremities, sequence),
                 cutExtremities(position_extremities, appariement));
+//        if (!corrected.verification_appariement()) { /*doit corriger la méthode*/
+//            System.out.println("Erreur : la séquence et le parenthésage n' ont pas la même taille");
+//            System.exit(1);
+//        }
+        return corrected;
     }
 
     //Methode qui donne à partir de fichier en format Stockholm la séquence consensus et l'appariement correspondant

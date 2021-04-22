@@ -13,8 +13,8 @@ public class Main {
         //System.out.println(arbre.treeToSequence());
         Tree motif = Tree.parenthesis_to_tree(l2.appariement,l2.sequence);
         Tree motif2 = Tree.parenthesis_to_tree(l3.appariement,l3.sequence);
-        System.out.println(l.contains(l2,true));
-        System.out.println(l.contains(l2,false));
+//        System.out.println(l.contains(l2,true));
+//        System.out.println(l.contains(l2,false));
         System.out.println(l2.biggestSubstrand(l));
     }
 }
