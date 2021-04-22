@@ -2,9 +2,9 @@ public class Main {
     public static void main(String[] args){
         Brin test = BrinBuilder.lire_fichier("RF00005.stockholm.txt");
         System.out.println(test.toString());
-        Brin l = BrinBuilder.input_brin("ACGUGCCACGAUUCAACGUGGCACAG", "--((((((((------))))))))--");
-        Brin l2 = BrinBuilder.input_brin("UUUGUGCCACGAUUCAACGUGGCAC","---((((((((------))))))))");
-        Brin l3 = BrinBuilder.input_brin("GUGCCACGAUUCAACGUGGCAC","((((((((------))))))))");
+        Brin l = new Brin("ACGUGCCACGAUUCAACGUGGCACAG", "--((((((((------))))))))--");
+        Brin l2 = new Brin("UUUGUGCCACGAUUCAACGUGGCAC","---((((((((------))))))))");
+        Brin l3 = new Brin("GUGCCACGAUUCAACGUGGCAC","((((((((------))))))))");
         System.out.println(l.parenthesages_egaux(l2));
         System.out.println(l.sequences_et_formes_egales(l2));
         System.out.println(l);
