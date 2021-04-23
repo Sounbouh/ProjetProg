@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -75,9 +76,11 @@ public class BrinBuilder {
                     sequence = currentLine.substring(27);
                 }
             }
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("Erreur lors de l'accès au fichier " + filename);
-            System.exit(1);
+            e.printStackTrace();
+        } catch (IOException e){
+            System.out.println("");
         }
         if(appariement != null && sequence != null){
             sequence_corrigee = sequence_corrected_without_extremities(sequence);

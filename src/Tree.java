@@ -33,8 +33,8 @@ public class Tree {
         return this.children.get(this.children.size() - 1);
     }
 
-    //Méthode qui traduit le parenthésage en arbre
-    public static Tree parenthesis_to_tree(Brin RNA) {
+    //Méthode qui traduit le brin en arbre
+    public static Tree strandToTree(Brin RNA) {
         String appariement = RNA.appariement;
         String sequence = RNA.sequence;
         Tree racine = new Tree();

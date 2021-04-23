@@ -8,11 +8,11 @@ public class Main {
         System.out.println(l.parenthesages_egaux(l2));
         System.out.println(l.sequences_et_formes_egales(l2));
         System.out.println(l);
-        Tree arbre = Tree.parenthesis_to_tree(l);
+        Tree arbre = Tree.strandToTree(l);
         System.out.println(arbre.treeToParenthesis());
         //System.out.println(arbre.treeToSequence());
-        Tree motif = Tree.parenthesis_to_tree(l2);
-        Tree motif2 = Tree.parenthesis_to_tree(l3);
+        Tree motif = Tree.strandToTree(l2);
+        Tree motif2 = Tree.strandToTree(l3);
 //        System.out.println(l.contains(l2,true));
 //        System.out.println(l.contains(l2,false));
         System.out.println(l2.biggestSubstrand(l));
