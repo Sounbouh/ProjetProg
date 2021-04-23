@@ -7,11 +7,6 @@ public class Tree {
     private Tree linkTofather;
     private String label;
 
-    @Override
-    public String toString() {
-        return label;
-    }
-
     public Tree() {
     }
 
@@ -39,7 +34,9 @@ public class Tree {
     }
 
     //Méthode qui traduit le parenthésage en arbre
-    public static Tree parenthesis_to_tree(String appariement, String sequence) {
+    public static Tree parenthesis_to_tree(Brin RNA) {
+        String appariement = RNA.appariement;
+        String sequence = RNA.sequence;
         Tree racine = new Tree();
         Tree father = racine;
         for (int i = 0; i < appariement.length(); i++) {
@@ -71,15 +68,19 @@ public class Tree {
         return parenthesis.toString();
     }
 
-    //Méthode qui permet d'afficher l'abre
-    public void affichageArbre() {
-        for (Tree noeud : this.children) {
-            if (noeud.children != null) {
-                System.out.print("[" + noeud.label);
-                noeud.affichageArbre();
-                System.out.print("]");
+    //Méthode qui permet d'afficher l'arbre
+    @Override
+    public String toString() {
+        StringBuilder tree = new StringBuilder();
+        for (Tree node : this.children) {
+            if (node.children != null) {
+                tree.append('[');
+                tree.append(node.label);
+                tree.append(node.toString());
+                tree.append(']');
             }
         }
+        return tree.toString();
     }
 
 

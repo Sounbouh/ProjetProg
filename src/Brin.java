@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Brin {
 
     final String sequence;
@@ -10,35 +12,31 @@ public class Brin {
     }
 
 
-//    public boolean verification_appariement() { //ne fonctionne pas vu que le parenthésage n'est pas symétrique, il faudrait faire une pile/file xD
-//        if (this.sequence.length() == this.appariement.length()) {
-//            int len = this.appariement.length();
-//            int i = this.appariement.indexOf('(');
-//            int j = this.appariement.lastIndexOf(')');
-//            while (i < this.appariement.length() && j > i) {
-//                char as = this.sequence.charAt(i);
-//                char bs = this.sequence.charAt(j);
-//                char aa = this.appariement.charAt(i);
-//                char ba = this.appariement.charAt(j);
-//                if(this.appariement.charAt(i) != '-'){
-//                    if (this.sequence.charAt(i) == 'A' && (this.sequence.charAt(j) == 'G' || this.sequence.charAt(j) == 'C' || this.sequence.charAt(j) == 'A')) {
-//                        return false;
-//                    } else if (this.sequence.charAt(i) == 'U' && (this.sequence.charAt(j) == 'G' || this.sequence.charAt(j) == 'C' || this.sequence.charAt(j) == 'U')) {
-//                        return false;
-//                    } else if (this.sequence.charAt(i) == 'G' && (this.sequence.charAt(j) == 'G' || this.sequence.charAt(j) == 'U' || this.sequence.charAt(j) == 'A')) {
-//                        return false;
-//                    } else if (this.sequence.charAt(i) == 'C' && (this.sequence.charAt(j) == 'U' || this.sequence.charAt(j) == 'C' || this.sequence.charAt(j) == 'A')) {
-//                        return false;
-//                    }
-//                }
-//                i++;
-//                j--;
-//            }
-//        } else {
-//            return false;
-//        }
-//        return true;
-//    }
+    public boolean verification_appariement() { //ne fonctionne pas vu que le parenthésage n'est pas symétrique, il faudrait faire une pile/file xD
+        if (this.sequence.length() == this.appariement.length()) {
+            int len = this.appariement.length();
+            Stack pile = new Stack();
+            for (int i = 0; i < this.appariement.length(); i++) {
+                if (this.appariement.charAt(i) == '('){
+                    pile.push(this.sequence.charAt(i));
+                } else if (this.appariement.charAt(i) == ')'){
+                    if (this.sequence.charAt(i) == 'A' && (pile.peek().equals('G')  || pile.peek().equals('C') || pile.peek().equals('A'))) {
+                        return false;
+                    } else if (this.sequence.charAt(i) == 'U' && (pile.peek().equals('G')  || pile.peek().equals('C') || pile.peek().equals('U'))) {
+                        return false;
+                    } else if (this.sequence.charAt(i) == 'G' && (pile.peek().equals('G')  || pile.peek().equals('U') || pile.peek().equals('A'))) {
+                        return false;
+                    } else if (this.sequence.charAt(i) == 'C' && (pile.peek().equals('C')  || pile.peek().equals('U') || pile.peek().equals('A'))) {
+                        return false;
+                    }
+                    pile.pop();
+                }
+            }
+        } else {
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public String toString() {
@@ -147,48 +145,5 @@ public class Brin {
             }
         }
         return new Brin(bestSequence.toString(), bestParenthesing.toString());
-
-
-//            char[] strandSeqChar = this.sequence.toCharArray();
-//            char[] strandParenthesisChar = this.appariement.toCharArray();
-//            char[] strandToCompareSeqChar = strandToCompare.sequence.toCharArray();
-//            char[] strandToCompareParenthesisChar = strandToCompare.appariement.toCharArray();
-//            int strandlength = strandSeqChar.length;
-//            int strandToComparelength = strandToCompareSeqChar.length;
-//            int[][] cache = new int[strandlength+1][strandToComparelength+1];
-//            int max = 0;
-//            int row =0;
-//            int col = 0;
-//            for (int i = 0; i<strandlength; i++){
-//                for (int j = 0; j < strandToComparelength; j++) {
-//                    if (i ==0 || j == 0){
-//                        cache[i][j] = 0;
-//                    }
-//                    else if (strandSeqChar[i-1]==strandToCompareSeqChar[j-1]
-//                            && strandParenthesisChar[i-1]==strandToCompareParenthesisChar[j-1]){
-//                        cache[i][j] = cache[i-1][j-1] + 1;
-//                        if (cache[i][j]>max){
-//                            max = cache[i][j];
-//                            row = i;
-//                            col = j;
-//                        }
-//                    }else {
-//                        cache[i][j] = 0;
-//                    }
-//                }
-//            }
-//            if (max == 0){
-//                System.out.println("No common substring");
-//                return null;
-//            }
-//            StringBuilder biggestSubSequence = new StringBuilder();
-//            StringBuilder biggestSubParenthesis = new StringBuilder();
-//            while (cache[row][col] !=0){
-//                biggestSubSequence.append(strandSeqChar[row - 1]);
-//                biggestSubParenthesis.append(strandParenthesisChar[row - 1]);
-//                row --;
-//                col --;
-//            }
-//            return new Brin(biggestSubSequence.reverse().toString(), biggestSubParenthesis.reverse().toString());
     }
 }

@@ -52,10 +52,10 @@ public class BrinBuilder {
         int[] position_extremities = firstAndLastParenthesis(appariement);
         Brin corrected = new Brin(cutExtremities(position_extremities, sequence),
                 cutExtremities(position_extremities, appariement));
-//        if (!corrected.verification_appariement()) { /*doit corriger la méthode*/
-//            System.out.println("Erreur : la séquence et le parenthésage n' ont pas la même taille");
-//            System.exit(1);
-//        }
+        if (!corrected.verification_appariement()) { /*doit corriger la méthode*/
+            System.out.println("Erreur : la séquence et le parenthésage ne correspondent pas");
+            System.exit(1);
+        }
         return corrected;
     }
 
