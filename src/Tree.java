@@ -85,6 +85,32 @@ public class Tree {
     }
 
     /**
+     * Méthode qui traduit l'arbre en séquence
+     * @return séquence correspondant à l'arbre
+     */
+    public String treeToSequence() {
+        StringBuilder sequence = new StringBuilder();
+        for (Tree node : this.children) {
+            if (Arrays.asList("A", "U", "G", "C").contains(node.label)) {
+                sequence.append(node.label);
+            } else {
+                sequence.append(node.label.charAt(0));
+                sequence.append(node.treeToSequence());
+                sequence.append(node.label.charAt(1));
+            }
+        }
+        return sequence.toString();
+    }
+
+    /**
+     * Méthode qui traduit l'arbre en brin
+     * @return brin correspondant à l'arbre
+     */
+    public Strand treeToStrand(){
+        return new Strand(this.treeToSequence(), this.treeToParenthesis());
+    }
+
+    /**
      * Méthode qui permet d'afficher l'arbre à l' aide de crochet pour représenter les branches
      * @return String représentant l'arbre
      */
@@ -109,33 +135,21 @@ public class Tree {
      * @return true si le motif est présent
      */
     public boolean presentInTree(Tree motif, boolean UseSequence) {
-        if (UseSequence) {
-            if (this.egalityTest(motif)){
-                return true;
-            } else {
-                for (Tree node : this.children) {
-                    if (node.egalityTest(motif)) {
-                        return true;
-                    } else {
-                        return node.presentInTree(motif, UseSequence);
-                    }
-                }
-            }
-        }
-//        else {
-//            if (this.children.size() == motif.children.size()){
-//                int i = 0;
-//                while (i<this.children.size() && !this.children.get(i).presentInTree(motif.children.get(i),UseSequence)){
-//                    i+=1;
-//                }
-//            return this.children.get(i).presentInTree(motif.children.get(i),UseSequence);
-//            } else {
-//                for (Tree node: this.children) {
-//
-//                }
-//            }
-//        }
-        return false;
+        Strand RNA = this.treeToStrand();
+        Strand motifRNA = motif.treeToStrand();
+        return RNA.contains(motifRNA, UseSequence);
+    }
+
+    /**
+     * Methode qui compare deux arbres pour trouver le plus grand sous arbre
+     * @param tree2 arbre qu' on veut comparer
+     * @return sous-arbre commun
+     */
+    public Tree biggestTreeInCommon(Tree tree2){
+        Strand RNA = this.treeToStrand();
+        Strand RNA2 = tree2.treeToStrand();
+        Strand biggestRNA =  RNA.biggestSubstrand(RNA2);
+        return strandToTree(biggestRNA);
     }
 }
 

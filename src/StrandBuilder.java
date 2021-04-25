@@ -6,7 +6,7 @@ import java.io.IOException;
 public class StrandBuilder {
     /**
      * Methode pour obtenir la position de la première et dernière parenthése
-     * @param parenthesing
+     * @param parenthesing parenthesage de l'ARN
      * @return tableau avec les positions
      */
     public static int[] firstAndLastParenthesis(String parenthesing){
@@ -25,11 +25,15 @@ public class StrandBuilder {
         return elementStrand.substring(positionExtremities[0],positionExtremities[1]+1);
     }
 
-    //Méthode qui modifie les notations de la séquence d'appariement pour ne garder que des parenthèses et des tirets
-    public static String appariement_corrected_without_extremities(String appariementToCorrect){
-        StringBuilder correctedAppariement = new StringBuilder(appariementToCorrect.length());
-        for (int i = 0; i < appariementToCorrect.length(); i++) {
-            char c = appariementToCorrect.charAt(i);
+    /**
+     * Méthode qui corrige les parenthésages alternatifs et enlève les gaps
+     * @param parenthesingToCorrect appariement avec gap(s) et parenthésages particuliers
+     * @return parenthésage sans gap et avec uniquement '(', ')' et '-'
+     */
+    public static String parenthesingCorrected(String parenthesingToCorrect){
+        StringBuilder correctedParenthesing = new StringBuilder(parenthesingToCorrect.length());
+        for (int i = 0; i < parenthesingToCorrect.length(); i++) {
+            char c = parenthesingToCorrect.charAt(i);
             if (c != '.'){
                 if (c == '(' || c == '[' || c == '{' || c == '<'){ //Caractères correspondant à des parenthèses ouvrantes
                     correctedParenthesing.append('(');
@@ -43,12 +47,16 @@ public class StrandBuilder {
         return correctedParenthesing.toString();
     }
 
-    //Méthode qui retire les points de la séquence consensus et l'écrit en majuscule
-    public static String sequence_corrected_without_extremities(String sequence_to_correct){
-        StringBuilder corrected_sequence = new StringBuilder(sequence_to_correct.length());
-        for (int i = 0; i < sequence_to_correct.length(); i++) {
-            if (sequence_to_correct.charAt(i) != '.'){
-                corrected_sequence.append(sequence_to_correct.charAt(i));
+    /**
+     * Methode qui enleve les gaps
+     * @param sequenceToCorrect séquence avec gap(s)
+     * @return séquence sans les gap(s)
+     */
+    public static String sequence_corrected(String sequenceToCorrect){
+        StringBuilder corrected_sequence = new StringBuilder(sequenceToCorrect.length());
+        for (int i = 0; i < sequenceToCorrect.length(); i++) {
+            if (sequenceToCorrect.charAt(i) != '.'){
+                corrected_sequence.append(sequenceToCorrect.charAt(i));
             }
         }
         return corrected_sequence.toString().toUpperCase();
