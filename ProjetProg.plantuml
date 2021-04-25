@@ -1,0 +1,53 @@
+@startuml
+
+title __Diagramme des classes__\n
+
+    class Strand {
+        ~ sequence : string
+        ~ parenthesing : string
+        + testParenthesing() : boolean
+        + toString()
+        + strandEgality(Strand strand2, String methode) : string
+        + sameParenthesing(Strand strand) : boolean
+        + sameSequenceAndParenthesing(Strand strand2) : boolean
+        + contains(Strand motif, boolean useSequence) : boolean
+        + biggestSubstrand(Strand strandToCompare) : string
+
+    }
+
+
+    class StrandBuilder {
+        + firstAndLastParenthesis(String parenthesing) : int
+        + cutExtremities(int[] positionExtremities, String elementStrand) : string
+        + parenthesingCorrected(String parenthesingToCorrect) : string
+        + sequence_corrected (String sequenceToCorrect) : string
+        + input_brin(String sequence, String parenthesing) : string
+        + readFile(String filename) : string
+    }
+
+
+    class Tree {
+        - children : arrayList<Tree>
+        - label : string
+        - linkTofather : tree
+        + Tree()
+        + Tree(String label, Tree father)
+        + addChildren(String label)
+        + addPair(String base)
+        + lastChild()
+        + strandToTree(Strand RNA) : tree
+        + toString() : string
+        + treeToParenthesis() : string
+        + treeToSequence() : string
+        + treeToStrand() : string
+        + presentInTree(Tree motif, boolean UseSequence) : boolean
+        + biggestTreeInCommon (Tree tree2) : tree
+    }
+
+  Tree "1"-down-"1" StrandBuilder : utilise les séquences
+  Strand "1"--right--- "1" Tree : utilise les séquences
+  Tree o- Tree : linkTofather
+
+
+
+@enduml
