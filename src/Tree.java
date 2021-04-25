@@ -10,7 +10,7 @@ public class Tree {
     public Tree() {
     }
 
-    //
+    //Constructeurs
     public Tree(String label, Tree father) {
         this.label = label;
         this.linkTofather = father;

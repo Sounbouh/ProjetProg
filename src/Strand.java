@@ -13,7 +13,7 @@ public class Strand {
 
     /**
      * Méthode vérifiant la correspondance entre le parenthésage et la séquence
-     * Seuls les A et U et les C et G peuvent être appariés
+     * Seuls les A et U et les C et G peuvent être appariés entre eux
      * Quand une parenthèse ouvrante est lue dans le parenthésage, son nucléotide correspond est empilé
      * Quand une parenthèse fermante est lue, le dernier nucléotide empilé est lu et comparé au nucléotide correspond
      * à la parenthèse fermante
@@ -55,7 +55,7 @@ public class Strand {
     /**
      * Verifie que 2 brins sont égaux
      * @param strand2 brin à comparer
-     * @param methode choix de si on compare que le parenthésage ("forme") ou aussi la séquence
+     * @param méthode choix de si on compare que le parenthésage ("forme") ou aussi la séquence
      * @return true si les deux brins sont égaux
      */
     public boolean strandEgality(Strand strand2, String methode) {
