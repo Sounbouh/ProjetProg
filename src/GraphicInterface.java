@@ -27,8 +27,8 @@ public class GraphicInterface extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-        javax.swing.JLabel title = new javax.swing.JLabel();
-
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RNA Comparison");
         //Initialisation des éléments graphiques pour ARN1
         javax.swing.JLabel nameRNA1 = new javax.swing.JLabel();
         EnterSequence1 = new javax.swing.JTextField();
@@ -78,12 +78,9 @@ public class GraphicInterface extends javax.swing.JFrame {
         javax.swing.JScrollPane biggestSubtreeScroll = new javax.swing.JScrollPane();
         biggestSubTreeResult = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
 
         //Paramètres des éléments graphiques
-        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title.setText("RNA secondary structure comparison");
-
         nameRNA1.setText("RNA 1");
         nameRNA2.setText("RNA 2");
 
@@ -170,10 +167,9 @@ public class GraphicInterface extends javax.swing.JFrame {
                                                 .addGap(367, 367, 367)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addComponent(parenthesingRNA2scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(sequenceRNA1scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(sequenceRNA2scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(parenthesingRNA1scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                        .addComponent(sequenceRNA1scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(sequenceRNA2scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(parenthesingRNA1scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(12, 12, 12)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,10 +190,6 @@ public class GraphicInterface extends javax.swing.JFrame {
                                 .addGap(225, 225, 225))
                         .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(570, 570, 570)
-                                                .addComponent(title)
-                                                .addGap(65, 65, 65))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(30, 30, 30)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +213,6 @@ public class GraphicInterface extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(title)
                                                         .addComponent(txtDisplayTree1))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(rna1TreeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -249,8 +240,8 @@ public class GraphicInterface extends javax.swing.JFrame {
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGap(39, 39, 39)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(nameRNA2)
-                                                                        .addComponent(submitRNA2)))
+                                                                        .addComponent(submitRNA2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(nameRNA2)))
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGap(18, 18, 18)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,10 +259,10 @@ public class GraphicInterface extends javax.swing.JFrame {
                                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                                         .addComponent(submitFile2)
                                                                                         .addComponent(nameOfFile2)))
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addComponent(txtDisplayTree2)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addComponent(rna2TreeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                        .addComponent(txtDisplayTree2)
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(rna2TreeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                                 .addGap(50, 50, 50)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(patternResearchLaunchingButton)

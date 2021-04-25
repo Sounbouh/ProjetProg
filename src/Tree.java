@@ -7,33 +7,46 @@ public class Tree {
     private Tree linkTofather;
     private String label;
 
-    public Tree() {
+    //Constructeurs
+    public Tree() { //Arbre vide
     }
 
-    //
-    public Tree(String label, Tree father) {
+    public Tree(String label, Tree father) { //Noeud d'un arbre
         this.label = label;
         this.linkTofather = father;
     }
 
-    //Méthode permettant d'ajouter des enfants à un noeud de l'arbre
+    /**
+     * Méthode permettant d'ajouter un enfant à un noeud de l'arbre
+     * @param label nucléotide de l'enfant
+     */
     public void addChildren(String label) {
         Tree child = new Tree(label, this);
         child.label = label;
         this.children.add(child);
     }
 
-    //Méthode permettant d'associer une base à sa paire
+    /**
+     * Méthode permettant d'associer une base à sa paire
+     * @param base base appariée au nucléotide déja présent dans le label
+     */
     public void addPair(String base) {
         this.label += base;
     }
 
-    //Méthode permettant d'accéder au dernier fils ajouté à un noeud
+    /**
+     * Méthode permettant d'accéder au dernier fils ajouté à un noeud
+     * @return dernier fils de l'arbre
+     */
     public Tree lastChild() {
         return this.children.get(this.children.size() - 1);
     }
 
-    //Méthode qui traduit le brin en arbre
+    /**
+     * Méthode qui traduit le brin en arbre
+     * @param RNA Brin à traduire
+     * @return brin traduit en arbre
+     */
     public static Tree strandToTree(Strand RNA) {
         String appariement = RNA.parenthesing;
         String sequence = RNA.sequence;
@@ -53,7 +66,10 @@ public class Tree {
         return racine;
     }
 
-    //Méthode qui traduit l'arbre en système de parenthèses
+    /**
+     * Méthode qui traduit l'arbre en système de parenthèses
+     * @return parenthésage correspondant à l'arbre
+     */
     public String treeToParenthesis() {
         StringBuilder parenthesis = new StringBuilder();
         for (Tree node : this.children) {
@@ -68,22 +84,30 @@ public class Tree {
         return parenthesis.toString();
     }
 
-    //Méthode qui permet d'afficher l'arbre
+    /**
+     * Méthode qui permet d'afficher l'arbre à l' aide de crochet pour représenter les branches
+     * @return String représentant l'arbre
+     */
     @Override
     public String toString() {
         StringBuilder tree = new StringBuilder();
         for (Tree node : this.children) {
-            if (node.children != null) {
+            if (node.children != null) { //Branche de l'arbre
                 tree.append('[');
-                tree.append(node.label);
-                tree.append(node.toString());
+                tree.append(node.label); //Affiche nucléotide(s) du noeud de la branche
+                tree.append(node.toString()); //Applique méthode à la branche
                 tree.append(']');
             }
         }
         return tree.toString();
     }
 
-    //Methode qui à partir d'un arbre compare si un motif ARN est présent dans l' arbre
+    /**
+     * Methode qui à partir d'un arbre compare si un motif ARN est présent dans l' arbre
+     * @param motif Arbre correspond au motif dont on veut tester la présence
+     * @param UseSequence Booléen correspond à l' utilisation (true) ou non de la comparaison de la séquence aussi
+     * @return true si le motif est présent
+     */
     public boolean presentInTree(Tree motif, boolean UseSequence) {
         if (UseSequence) {
             if (this.egalityTest(motif)){
