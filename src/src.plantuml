@@ -2,102 +2,47 @@
 
 title __Diagramme des classes__\n
 
-
-    class Arbre {
-        + lienVerslePere : String
-        + noeud : String
-        + parenthesage : ArrayList<Arbre>
-        + insertionNiveauArbre()
-    }
-
-
-    class Arbre.Noeud {
-        ~ data : int
-        ~ Noeud()
-    }
-  
-
-
-    class GUI {
-        - panel1 : JPanel
-    }
-
-  
-
-    class GraphicInterface {
-        - EnterParenthesis1 : JTextField
-        - EnterParenthesis2 : JTextField
-        - EnterSequence1 : JTextField
-        - EnterSequence2 : JTextField
-        - ParenthesingRNA1 : JTextArea
-        - ParenthesingRNA2 : JTextArea
-        - RNA1Tree : JTextArea
-        - RNA2Tree : JTextArea
-        - SequenceRNA1 : JTextArea
-        - SequenceRNA2 : JTextArea
-        - biggestSubTreeResult : JTextArea
-        - choiceOfElementToCompare : JCheckBox
-        - nameOfFile1 : JLabel
-        - nameOfFile2 : JLabel
-        - resultPatternResearch : JLabel
-        + GraphicInterface()
-        {static} + main()
-        - BiggestSubtreeLauncherActionPerformed()
-        - PatternResearchLaunchingButtonActionPerformed()
-        - SubmitFileActionPerformed()
-        - SubmitRNAActionPerformed()
-        - initComponents()
-    }
-  
-
     class Strand {
-        ~ parenthesing : String
-        ~ sequence : String
-        + Strand()
-        + biggestSubstrand()
-        + contains()
-        + sameParenthesing()
-        + sequences_et_formes_egales()
-        + strandEgality()
+        ~ parenthesing : string
+        ~ sequence : string
+        + Strand(String sequence, String parenthesing)
+        + biggestSubstrand(Strand strandToCompare) : string
+        + contains(Strand motif, boolean useSequence) : boolean
+        + sameParenthesing(Strand strand) : boolean
+        + sequences_et_formes_egales(Strand strand2) : boolean
+        + strandEgality(Strand strand2, String methode) : boolean
         + testParenthesing()
         + toString()
     }
   
 
     class StrandBuilder {
-        {static} + appariement_corrected_without_extremities()
-        {static} + cutExtremities()
-        {static} + firstAndLastParenthesis()
-        {static} + input_brin()
-        {static} + readFile()
-        {static} + sequence_corrected_without_extremities()
+        + appariement_corrected_without_extremities(String appariementToCorrect) : string
+        + cutExtremities(int[] positionExtremities, String elementStrand) : string
+        + firstAndLastParenthesis(String parenthesing) : int
+        + input_brin(String sequence, String parenthesing) : string
+        + readFile(String filename) : string
+        + sequence_corrected_without_extremities(String sequence_to_correct) : string
     }
-  
 
-    class Tests {
-        {static} + main()
-    }
-  
 
     class Tree {
-        - children : ArrayList<Tree>
-        - label : String
+        - children : arrayList<Tree>
+        - label : string
         + Tree()
-        + Tree()
-        + addChildren()
-        + addPair()
+        + Tree(String label, Tree father)
+        + addChildren(String label)
+        + addPair(String base)
         + lastChild()
-        + presentInTree()
-        {static} + strandToTree()
-        + toString()
-        + treeToParenthesis()
+        + presentInTree(Tree motif, boolean UseSequence) : boolean
+        + strandToTree(Strand RNA)
+        + toString() : string
+        + treeToParenthesis() : string
     }
   
-
-  Arbre +-down- Arbre.Noeud
-  Arbre.Noeud o-- Arbre.Noeud : droite
-  Arbre.Noeud o-- Arbre.Noeud : gauche
-  Tree o-- Tree : linkTofather
+  Tree "1"-down-"1" StrandBuilder : utilise les séquences
+  Strand "1"--right--- "1" Tree : utilise les séquences
+  Tree o- Tree : linkTofather
 
 
 
