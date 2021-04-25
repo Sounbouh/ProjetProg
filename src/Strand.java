@@ -1,5 +1,6 @@
 import java.util.Stack;
 
+//Classe permettant de représenter un brin d'ARN avec sa séquence et son appariement en parenthésage
 public class Strand {
 
     final String sequence;
@@ -128,7 +129,15 @@ public class Strand {
         return false;
     }
 
-    //Méthode permettant de trouver le plus grand sous-arbre commun à deux brins d'ARN
+    //
+
+    /**
+     * Methode permettant de trouver la plus grand partie de séquence/parenthésage en commun
+     * Pour vérifier qu'on a bien une structure secondaire le nombre de parenthèses ouvrante
+     * doit être égal au nombre de fermante
+     * @param strandToCompare ARN à comparer
+     * @return Brin correspondant à la plus grande structure secondaire en commun
+     */
     public Strand biggestSubstrand(Strand strandToCompare) {
         int bestScore = 0;
         StringBuilder bestSequence = new StringBuilder();
@@ -147,8 +156,8 @@ public class Strand {
                             && this.sequence.charAt(i) == strandToCompare.sequence.charAt(j)) {
                         bufferSequence.append(this.sequence.charAt(i));
                         bufferParenthesing.append(this.parenthesing.charAt(i));
-                        if (this.sequence.charAt(i) == '(') nb_opening_parenthesis++;
-                        else if (this.sequence.charAt(i) == ')') nb_closing_parenthesis++;
+                        if (this.parenthesing.charAt(i) == '(') nb_opening_parenthesis++;
+                        else if (this.parenthesing.charAt(i) == ')') nb_closing_parenthesis++;
                         i++;
                         j++;
                     }

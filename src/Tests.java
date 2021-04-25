@@ -5,6 +5,8 @@ public class Tests {
         Strand l = new Strand("ACGUGCCACGAUUCAACGUGGCACAG", "--((((((((------))))))))--");
         Strand l2 = new Strand("UUUGUGCCACGAUUCAACGUGGCAC","---((((((((------))))))))");
         Strand l3 = new Strand("GUGCCACGAUUCAACGUGGCAC","((((((((------))))))))");
+        Strand ltest1 = new Strand("AAUU", "(())");
+        Strand ltest2 = new Strand("AAAAGGCCUU", "((--(())))");
         System.out.println(l.sameParenthesing(l2));
         System.out.println(l.sequences_et_formes_egales(l2));
         System.out.println(l);
@@ -15,6 +17,6 @@ public class Tests {
         Tree motif2 = Tree.strandToTree(l3);
 //        System.out.println(l.contains(l2,true));
 //        System.out.println(l.contains(l2,false));
-        System.out.println(l2.biggestSubstrand(l));
+        System.out.println(ltest1.biggestSubstrand(ltest2));
     }
 }

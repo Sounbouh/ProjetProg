@@ -5,9 +5,9 @@ import java.io.IOException;
 
 public class StrandBuilder {
     /**
-     *
+     * Methode pour obtenir la position de la première et dernière parenthése
      * @param parenthesing
-     * @return position de la première et dernière parenthése
+     * @return tableau avec les positions
      */
     public static int[] firstAndLastParenthesis(String parenthesing){
         int first = parenthesing.indexOf('(');
@@ -16,7 +16,7 @@ public class StrandBuilder {
     }
 
     /**
-     *
+     * Méthode qui coupe une séquence au niveau des positions données
      * @param positionExtremities position de la première et derniere parenthèses
      * @param elementStrand séquence ou parenthésage
      * @return parenthésage ou parenthésage sans les extrémités non appariées
@@ -31,9 +31,9 @@ public class StrandBuilder {
         for (int i = 0; i < appariementToCorrect.length(); i++) {
             char c = appariementToCorrect.charAt(i);
             if (c != '.'){
-                if (c == '(' || c == '[' || c == '{' || c == '<'){
+                if (c == '(' || c == '[' || c == '{' || c == '<'){ //Caractères correspondant à des parenthèses ouvrantes
                     correctedParenthesing.append('(');
-                } else if (c == ')' || c == ']' || c == '}' || c == '>'){
+                } else if (c == ')' || c == ']' || c == '}' || c == '>'){ //Caractères correspondant à des parenthèses fermantes
                     correctedParenthesing.append(')');
                 } else {
                     correctedParenthesing.append('-');
