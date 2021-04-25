@@ -2,68 +2,48 @@
 
 title __Diagramme des classes__\n
 
-
-    class Arbre {
-        + lienVerslePere : String
-        + noeud : String
-        + parenthesage : ArrayList<Arbre>
-        + insertionNiveauArbre()
-    }
-
-
-    class Arbre.Noeud {
-        ~ data : int
-        ~ Noeud()
-    }
   
 
     class Strand {
-        ~ parenthesing : String
-        ~ sequence : String
-        + Strand()
-        + biggestSubstrand()
-        + contains()
-        + sameParenthesing()
-        + sequences_et_formes_egales()
-        + strandEgality()
+        ~ parenthesing : string
+        ~ sequence : string
+        + Strand(String sequence, String parenthesing)
+        + biggestSubstrand(Strand strandToCompare) : string
+        + contains(Strand motif, boolean useSequence) : boolean
+        + sameParenthesing(Strand strand) : boolean
+        + sequences_et_formes_egales(Strand strand2) : boolean
+        + strandEgality(Strand strand2, String methode) : boolean
         + testParenthesing()
         + toString()
     }
   
 
     class StrandBuilder {
-        {static} + appariement_corrected_without_extremities()
-        {static} + cutExtremities()
-        {static} + firstAndLastParenthesis()
-        {static} + input_brin()
-        {static} + readFile()
-        {static} + sequence_corrected_without_extremities()
+        + appariement_corrected_without_extremities(String appariementToCorrect) : string
+        + cutExtremities(int[] positionExtremities, String elementStrand) : string
+        + firstAndLastParenthesis(String parenthesing) : int
+        + input_brin(String sequence, String parenthesing) : string
+        + readFile(String filename) : string
+        + sequence_corrected_without_extremities(String sequence_to_correct) : string
     }
-  
 
-    class Tests {
-        {static} + main()
-    }
-  
 
     class Tree {
-        - children : ArrayList<Tree>
-        - label : String
+        - children : arrayList<Tree>
+        - label : string
         + Tree()
-        + Tree()
-        + addChildren()
-        + addPair()
+        + Tree(String label, Tree father)
+        + addChildren(String label)
+        + addPair(String base)
         + lastChild()
-        + presentInTree()
-        {static} + strandToTree()
-        + toString()
-        + treeToParenthesis()
+        + presentInTree(Tree motif, boolean UseSequence) : boolean
+        + strandToTree(Strand RNA)
+        + toString() : string
+        + treeToParenthesis() : string
     }
   
-
-  Arbre +-down- Arbre.Noeud
-  Arbre.Noeud o-- Arbre.Noeud : droite
-  Arbre.Noeud o-- Arbre.Noeud : gauche
+  Tree -down- StrandBuilder : utilise les séquences
+  Strand -right- Tree : utilise les séquences
   Tree o-- Tree : linkTofather
 
 
