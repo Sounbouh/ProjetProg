@@ -1,11 +1,11 @@
-public class Main {
+public class Tests {
     public static void main(String[] args){
-        Brin test = BrinBuilder.lire_fichier("RF00005.stockholm.txt");
+        Strand test = StrandBuilder.readFile("RF00005.stockholm.txt");
         System.out.println(test.toString());
-        Brin l = new Brin("ACGUGCCACGAUUCAACGUGGCACAG", "--((((((((------))))))))--");
-        Brin l2 = new Brin("UUUGUGCCACGAUUCAACGUGGCAC","---((((((((------))))))))");
-        Brin l3 = new Brin("GUGCCACGAUUCAACGUGGCAC","((((((((------))))))))");
-        System.out.println(l.parenthesages_egaux(l2));
+        Strand l = new Strand("ACGUGCCACGAUUCAACGUGGCACAG", "--((((((((------))))))))--");
+        Strand l2 = new Strand("UUUGUGCCACGAUUCAACGUGGCAC","---((((((((------))))))))");
+        Strand l3 = new Strand("GUGCCACGAUUCAACGUGGCAC","((((((((------))))))))");
+        System.out.println(l.sameParenthesing(l2));
         System.out.println(l.sequences_et_formes_egales(l2));
         System.out.println(l);
         Tree arbre = Tree.strandToTree(l);

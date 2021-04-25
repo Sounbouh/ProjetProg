@@ -34,8 +34,8 @@ public class Tree {
     }
 
     //Méthode qui traduit le brin en arbre
-    public static Tree strandToTree(Brin RNA) {
-        String appariement = RNA.appariement;
+    public static Tree strandToTree(Strand RNA) {
+        String appariement = RNA.parenthesing;
         String sequence = RNA.sequence;
         Tree racine = new Tree();
         Tree father = racine;
@@ -83,27 +83,7 @@ public class Tree {
         return tree.toString();
     }
 
-
-    //Méthode permettant de comparer si deux arbres sont les mêmes
-    public boolean egalityTest(Tree toCompare) {
-        if (this.label.equals(toCompare.label)) {
-            if (this.children == null && toCompare.children == null) {
-                return true;
-            } else if (this.children != null && toCompare.children != null) {
-                if (this.children.size() == toCompare.children.size()){
-                    for (int i = 0; i < this.children.size(); i++) {
-                        if (this.children.get(i).label.equals(toCompare.children.get(i).label)){
-                            if (!this.children.get(i).egalityTest(toCompare.children.get(i))){
-                                return false;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
+    //Methode qui à partir d'un arbre compare si un motif ARN est présent dans l' arbre
     public boolean presentInTree(Tree motif, boolean UseSequence) {
         if (UseSequence) {
             if (this.egalityTest(motif)){
