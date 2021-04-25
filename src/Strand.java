@@ -56,14 +56,14 @@ public class Strand {
     /**
      * Verifie que 2 brins sont égaux
      * @param strand2 brin à comparer
-     * @param méthode choix de si on compare que le parenthésage ("forme") ou aussi la séquence
+     * @param method choix de si on compare que le parenthésage ("forme") ou aussi la séquence
      * @return true si les deux brins sont égaux
      */
-    public boolean strandEgality(Strand strand2, String methode) {
-        if (methode.equals("forme")) {
+    public boolean strandEgality(Strand strand2, String method) {
+        if (method.equals("forme")) {
             return this.sameParenthesing(strand2);
         } else {
-            return this.sequences_et_formes_egales(strand2);
+            return this.sameSequenceAndParenthesing(strand2);
         }
     }
 
@@ -97,7 +97,7 @@ public class Strand {
      * @param strand2 brin à comparer
      * @return true si le parenthésage et la séquence sont identiques ou au moins le début
      */
-    public boolean sequences_et_formes_egales(Strand strand2) {
+    public boolean sameSequenceAndParenthesing(Strand strand2) {
         int i = 0;
         int j = 0;
         while (i < this.parenthesing.length() && j < strand2.parenthesing.length()) {

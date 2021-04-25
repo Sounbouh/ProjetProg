@@ -8,7 +8,7 @@ public class Tests {
         Strand ltest1 = new Strand("AAUU", "(())");
         Strand ltest2 = new Strand("AAAAGGCCUU", "((--(())))");
         System.out.println(l.sameParenthesing(l2));
-        System.out.println(l.sequences_et_formes_egales(l2));
+        System.out.println(l.sameSequenceAndParenthesing(l2));
         System.out.println(l);
         Tree arbre = Tree.strandToTree(l);
         System.out.println(arbre.treeToParenthesis());

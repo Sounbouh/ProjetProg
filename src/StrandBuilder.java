@@ -53,13 +53,13 @@ public class StrandBuilder {
      * @return séquence sans les gap(s)
      */
     public static String sequence_corrected(String sequenceToCorrect){
-        StringBuilder corrected_sequence = new StringBuilder(sequenceToCorrect.length());
+        StringBuilder correctedSequence = new StringBuilder(sequenceToCorrect.length());
         for (int i = 0; i < sequenceToCorrect.length(); i++) {
             if (sequenceToCorrect.charAt(i) != '.'){
-                corrected_sequence.append(sequenceToCorrect.charAt(i));
+                correctedSequence.append(sequenceToCorrect.charAt(i));
             }
         }
-        return corrected_sequence.toString().toUpperCase();
+        return correctedSequence.toString().toUpperCase();
     }
 
     /**
