@@ -40,8 +40,8 @@ title __Diagramme des classes__\n
         + treeToParenthesis() : string
     }
   
-  Tree "..."-down-"*" StrandBuilder : utilise les séquences
-  Strand "*"--right--- "..." Tree : utilise les séquences
+  Tree "1"-down-"1" StrandBuilder : utilise les séquences
+  Strand "1"--right--- "1" Tree : utilise les séquences
   Tree o- Tree : linkTofather
 
 
