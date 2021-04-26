@@ -36,7 +36,7 @@ public class Strand {
                     } else if (this.sequence.charAt(i) == 'C' && (pile.peek().equals('C')  || pile.peek().equals('U') || pile.peek().equals('A'))) {
                         return false;
                     }
-                    pile.pop(); /*défile le nucléotide*/
+                    pile.pop(); /*dépile le nucléotide*/
                 }
             }
         } else { /*le parenthésage et la séquence n'ont pas la même taille*/
