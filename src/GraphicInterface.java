@@ -118,11 +118,11 @@ public class GraphicInterface extends javax.swing.JFrame {
         SequenceRNA2.setText("No sequence entered");
         sequenceRNA2scroll.setViewportView(SequenceRNA2);
 
-        RNA1Tree.setColumns(20);
+        RNA1Tree.setColumns(30);
         RNA1Tree.setRows(5);
         rna1TreeScrollPane.setViewportView(RNA1Tree);
         txtDisplayTree1.setText("Display RNA1 tree");
-        RNA2Tree.setColumns(20);
+        RNA2Tree.setColumns(30);
         RNA2Tree.setRows(5);
         rna2TreeScrollPane.setViewportView(RNA2Tree);
         txtDisplayTree2.setText("Display RNA2 tree");
@@ -134,7 +134,7 @@ public class GraphicInterface extends javax.swing.JFrame {
 
         biggestSubtreeLauncher.setText("Biggest subtree in common");
         biggestSubtreeLauncher.addActionListener(this::BiggestSubtreeLauncherActionPerformed);
-        biggestSubTreeResult.setColumns(20);
+        biggestSubTreeResult.setColumns(40);
         biggestSubTreeResult.setRows(5);
         biggestSubtreeScroll.setViewportView(biggestSubTreeResult);
 
@@ -187,7 +187,7 @@ public class GraphicInterface extends javax.swing.JFrame {
                                         .addComponent(rna1TreeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtDisplayTree2)
                                         .addComponent(rna2TreeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(225, 225, 225))
+                                .addGap(25, 25, 25))
                         .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
