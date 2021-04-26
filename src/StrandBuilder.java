@@ -72,7 +72,7 @@ public class StrandBuilder {
         int[] position_extremities = firstAndLastParenthesis(parenthesing);
         Strand corrected = new Strand(cutExtremities(position_extremities, sequence),
                 cutExtremities(position_extremities, parenthesing));
-        if (!corrected.testParenthesing()) { /*doit corriger la méthode*/
+        if (!corrected.testParenthesing()) { //Le parenthésage ne correspond pas à la séquence
             System.out.println("Erreur : la séquence et le parenthésage ne correspondent pas");
             System.exit(1);
         }

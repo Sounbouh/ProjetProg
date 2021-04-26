@@ -145,21 +145,24 @@ public class Strand {
         StringBuilder bufferSequence = new StringBuilder();
         StringBuilder bufferParenthesing = new StringBuilder();
         if (this.contains(strandToCompare, true)) {//si strandToCompare est entièrement motif de this
-            return this;
+            return strandToCompare;
         } else {
             for (int i = 0; i < this.parenthesing.length(); i++) {
                 for (int j = 0; j < strandToCompare.parenthesing.length(); j++) {
                     int nb_opening_parenthesis = 0;
                     int nb_closing_parenthesis = 0;
-                    while (i < this.parenthesing.length() && j < strandToCompare.parenthesing.length()
-                            && this.parenthesing.charAt(i) == strandToCompare.parenthesing.charAt(j)
-                            && this.sequence.charAt(i) == strandToCompare.sequence.charAt(j)) {
-                        bufferSequence.append(this.sequence.charAt(i));
-                        bufferParenthesing.append(this.parenthesing.charAt(i));
-                        if (this.parenthesing.charAt(i) == '(') nb_opening_parenthesis++;
-                        else if (this.parenthesing.charAt(i) == ')') nb_closing_parenthesis++;
-                        i++;
-                        j++;
+                    int k = i;
+                    int l = j;
+                    while (k < this.parenthesing.length() && l < strandToCompare.parenthesing.length()
+                            && this.parenthesing.charAt(k) == strandToCompare.parenthesing.charAt(l)
+                            && this.sequence.charAt(k) == strandToCompare.sequence.charAt(l)
+                            && nb_closing_parenthesis<=nb_opening_parenthesis) {
+                        bufferSequence.append(this.sequence.charAt(k));
+                        bufferParenthesing.append(this.parenthesing.charAt(k));
+                        if (this.parenthesing.charAt(k) == '(') nb_opening_parenthesis++;
+                        else if (this.parenthesing.charAt(k) == ')') nb_closing_parenthesis++;
+                        k++;
+                        l++;
                     }
                     if (bufferSequence.length() > bestScore && nb_closing_parenthesis == nb_opening_parenthesis) {
                         /*si le dernier motif possible est plus grand que le maximum, il devient le plus grand motif connu*/
