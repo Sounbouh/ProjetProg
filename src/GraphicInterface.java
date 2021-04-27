@@ -1,19 +1,20 @@
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.event.FocusEvent;
 
 public class GraphicInterface extends javax.swing.JFrame {
     // Declaration des variables
-    private javax.swing.JTextField EnterParenthesis1;
-    private javax.swing.JTextField EnterParenthesis2;
-    private javax.swing.JTextField EnterSequence1;
-    private javax.swing.JTextField EnterSequence2;
-    private javax.swing.JTextArea ParenthesingRNA1;
-    private javax.swing.JTextArea ParenthesingRNA2;
+    private javax.swing.JTextField enterParenthesing1;
+    private javax.swing.JTextField enterParenthesing2;
+    private javax.swing.JTextField enterSequence1;
+    private javax.swing.JTextField enterSequence2;
+    private javax.swing.JTextArea parenthesingRNA1;
+    private javax.swing.JTextArea parenthesingRNA2;
     private javax.swing.JTextArea RNA1Tree;
     private javax.swing.JTextArea RNA2Tree;
-    private javax.swing.JTextArea SequenceRNA1;
-    private javax.swing.JTextArea SequenceRNA2;
+    private javax.swing.JTextArea sequenceRNA1;
+    private javax.swing.JTextArea sequenceRNA2;
     private javax.swing.JTextArea biggestSubTreeResult;
     private javax.swing.JCheckBox choiceOfElementToCompare;
     private javax.swing.JLabel nameOfFile1;
@@ -31,12 +32,12 @@ public class GraphicInterface extends javax.swing.JFrame {
         setTitle("RNA Comparison");
         //Initialisation des éléments graphiques pour ARN1
         javax.swing.JLabel nameRNA1 = new javax.swing.JLabel();
-        EnterSequence1 = new javax.swing.JTextField();
-        SequenceRNA1 = new javax.swing.JTextArea();
+        enterSequence1 = new javax.swing.JTextField();
+        sequenceRNA1 = new javax.swing.JTextArea();
         javax.swing.JScrollPane sequenceRNA1scroll = new javax.swing.JScrollPane();
 
-        EnterParenthesis1 = new javax.swing.JTextField();
-        ParenthesingRNA1 = new javax.swing.JTextArea();
+        enterParenthesing1 = new javax.swing.JTextField();
+        parenthesingRNA1 = new javax.swing.JTextArea();
         javax.swing.JScrollPane parenthesingRNA1scroll = new javax.swing.JScrollPane();
 
         javax.swing.JButton submitRNA1 = new javax.swing.JButton();
@@ -51,13 +52,13 @@ public class GraphicInterface extends javax.swing.JFrame {
         //Initialisation des éléments graphiques pour ARN2
         javax.swing.JLabel nameRNA2 = new javax.swing.JLabel();
 
-        EnterSequence2 = new javax.swing.JTextField();
+        enterSequence2 = new javax.swing.JTextField();
         javax.swing.JScrollPane sequenceRNA2scroll = new javax.swing.JScrollPane();
-        SequenceRNA2 = new javax.swing.JTextArea();
+        sequenceRNA2 = new javax.swing.JTextArea();
 
-        EnterParenthesis2 = new javax.swing.JTextField();
+        enterParenthesing2 = new javax.swing.JTextField();
         javax.swing.JScrollPane parenthesingRNA2scroll = new javax.swing.JScrollPane();
-        ParenthesingRNA2 = new javax.swing.JTextArea();
+        parenthesingRNA2 = new javax.swing.JTextArea();
 
         javax.swing.JButton submitRNA2 = new javax.swing.JButton();
 
@@ -84,39 +85,59 @@ public class GraphicInterface extends javax.swing.JFrame {
         nameRNA1.setText("RNA 1");
         nameRNA2.setText("RNA 2");
 
-        EnterSequence1.setText("Enter sequence1");
-        EnterSequence2.setText("Enter sequence 2");
-        EnterParenthesis1.setText("Enter parenthesing1");
-        EnterParenthesis2.setText("Enter parenthesing2");
+        enterSequence1.setText("Enter sequence1");
+        enterSequence1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                JTextFieldfocusGained(evt);
+            }
+        });
+        enterSequence2.setText("Enter sequence 2");
+        enterSequence2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                JTextFieldfocusGained(evt);
+            }
+        });
+        enterParenthesing1.setText("Enter parenthesing1");
+        enterParenthesing1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                JTextFieldfocusGained(evt);
+            }
+        });
+        enterParenthesing2.setText("Enter parenthesing2");
+        enterParenthesing2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                JTextFieldfocusGained(evt);
+            }
+        });
         submitRNA1.setText("Submit");
-        submitRNA1.addActionListener(evt -> SubmitRNAActionPerformed(1));
+        submitRNA1.addActionListener(evt -> submitRNAActionPerformed(1));
         submitRNA2.setText("Submit");
-        submitRNA2.addActionListener(evt -> SubmitRNAActionPerformed(2));
+        submitRNA2.addActionListener(evt -> submitRNAActionPerformed(2));
 
         nameOfFile2.setText("No file choosen");
         nameOfFile1.setText("No file choosen");
         submitFile1.setText("Use file");
-        submitFile1.addActionListener(evt -> SubmitFileActionPerformed(1));
+        submitFile1.addActionListener(evt -> submitFileActionPerformed(1));
         submitFile2.setText("Use file");
-        submitFile2.addActionListener(evt -> SubmitFileActionPerformed(2));
+        submitFile2.addActionListener(evt -> submitFileActionPerformed(2));
 
-        ParenthesingRNA1.setColumns(20);
-        ParenthesingRNA1.setRows(5);
-        ParenthesingRNA1.setText("No parenthesing entered");
-        parenthesingRNA1scroll.setViewportView(ParenthesingRNA1);
-        ParenthesingRNA2.setColumns(20);
-        ParenthesingRNA2.setRows(5);
-        ParenthesingRNA2.setText("No parenthesing entered");
-        parenthesingRNA2scroll.setViewportView(ParenthesingRNA2);
+        parenthesingRNA1.setColumns(20);
+        parenthesingRNA1.setRows(5);
+        parenthesingRNA1.setText("No parenthesing entered");
+        parenthesingRNA1scroll.setViewportView(parenthesingRNA1);
+        parenthesingRNA2.setColumns(20);
+        parenthesingRNA2.setRows(5);
+        parenthesingRNA2.setText("No parenthesing entered");
+        parenthesingRNA2scroll.setViewportView(parenthesingRNA2);
 
-        SequenceRNA1.setColumns(20);
-        SequenceRNA1.setRows(5);
-        SequenceRNA1.setText("No sequence entered");
-        sequenceRNA1scroll.setViewportView(SequenceRNA1);
-        SequenceRNA2.setColumns(20);
-        SequenceRNA2.setRows(5);
-        SequenceRNA2.setText("No sequence entered");
-        sequenceRNA2scroll.setViewportView(SequenceRNA2);
+        sequenceRNA1.setColumns(20);
+        sequenceRNA1.setRows(5);
+        sequenceRNA1.setText("No sequence entered");
+        sequenceRNA1scroll.setViewportView(sequenceRNA1);
+        sequenceRNA2.setColumns(20);
+        sequenceRNA2.setRows(5);
+        sequenceRNA2.setText("No sequence entered");
+        sequenceRNA2scroll.setViewportView(sequenceRNA2);
 
         RNA1Tree.setColumns(30);
         RNA1Tree.setRows(5);
@@ -128,12 +149,12 @@ public class GraphicInterface extends javax.swing.JFrame {
         txtDisplayTree2.setText("Display RNA2 tree");
 
         patternResearchLaunchingButton.setText("RNA2 pattern present in RNA1 ");
-        patternResearchLaunchingButton.addActionListener(this::PatternResearchLaunchingButtonActionPerformed);
+        patternResearchLaunchingButton.addActionListener(this::patternResearchLaunchingButtonActionPerformed);
         resultPatternResearch.setText("No pattern research done");
         choiceOfElementToCompare.setText("Use only parenthesing to compare");
 
         biggestSubtreeLauncher.setText("Biggest subtree in common");
-        biggestSubtreeLauncher.addActionListener(this::BiggestSubtreeLauncherActionPerformed);
+        biggestSubtreeLauncher.addActionListener(this::biggestSubtreeLauncherActionPerformed);
         biggestSubTreeResult.setColumns(40);
         biggestSubTreeResult.setRows(5);
         biggestSubtreeScroll.setViewportView(biggestSubTreeResult);
@@ -153,14 +174,14 @@ public class GraphicInterface extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addGroup(layout.createSequentialGroup()
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(EnterSequence2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(EnterParenthesis2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(enterSequence2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(enterParenthesing2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGap(27, 27, 27)
                                                         .addComponent(submitRNA2))
                                                 .addGroup(layout.createSequentialGroup()
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(EnterSequence1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(EnterParenthesis1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(enterSequence1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(enterParenthesing1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGap(27, 27, 27)
                                                         .addComponent(submitRNA1)))
                                         .addGroup(layout.createSequentialGroup()
@@ -220,9 +241,9 @@ public class GraphicInterface extends javax.swing.JFrame {
                                                 .addGap(36, 36, 36)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(EnterSequence1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(enterSequence1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(23, 23, 23)
-                                                                .addComponent(EnterParenthesis1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(enterParenthesing1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(1, 1, 1)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                         .addComponent(submitFile1)
@@ -252,9 +273,9 @@ public class GraphicInterface extends javax.swing.JFrame {
                                                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                                                 .addComponent(parenthesingRNA2scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                         .addGroup(layout.createSequentialGroup()
-                                                                                                .addComponent(EnterSequence2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                .addComponent(enterSequence2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                 .addGap(18, 18, 18)
-                                                                                                .addComponent(EnterParenthesis2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                                                .addComponent(enterParenthesing2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                                                 .addGap(18, 18, 18)
                                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                                         .addComponent(submitFile2)
@@ -282,6 +303,12 @@ public class GraphicInterface extends javax.swing.JFrame {
         pack();
     }
 
+    private void JTextFieldfocusGained(FocusEvent e){
+        JTextField source = (JTextField)e.getComponent();
+        if (source.getText().startsWith("Enter")){
+            source.setText("");
+        }
+    }
     /**
      * Methode pour choisir un fichier texte quand on clique sur un bouton submit file
      * Elle utilise la méthode readFile de BrinBuilder pour lire le fichier
@@ -289,7 +316,7 @@ public class GraphicInterface extends javax.swing.JFrame {
      * affiche l'arbre
      * @param RNA numero du RNA auxquels les champs à remplir sont associés
      */
-    private void SubmitFileActionPerformed(int RNA) {
+    private void submitFileActionPerformed(int RNA) {
         JFileChooser fileOpener = new JFileChooser();
 
         //Empecher l'utilisateur de voir des fichiers autres que .txt
@@ -303,13 +330,13 @@ public class GraphicInterface extends javax.swing.JFrame {
             Strand input = StrandBuilder.readFile(fileOpener.getSelectedFile().getPath());
             if (RNA == 1){
                 nameOfFile1.setText("You opened " + fileOpener.getSelectedFile().getName());/*fichier ouvert*/
-                ParenthesingRNA1.setText(input.parenthesing);
-                SequenceRNA1.setText(input.sequence);
+                parenthesingRNA1.setText(input.parenthesing);
+                sequenceRNA1.setText(input.sequence);
                 RNA1Tree.setText(Tree.strandToTree(input).toString());
             } else{
                 nameOfFile2.setText("You opened " + fileOpener.getSelectedFile().getName());
-                ParenthesingRNA2.setText(input.parenthesing);
-                SequenceRNA2.setText(input.sequence);
+                parenthesingRNA2.setText(input.parenthesing);
+                sequenceRNA2.setText(input.sequence);
                 RNA2Tree.setText(Tree.strandToTree(input).toString());
             }
 
@@ -321,9 +348,9 @@ public class GraphicInterface extends javax.swing.JFrame {
      * Elle donne l'affichage de l'arbre obtenu dans le champ biggestSubTreeResult
      * @param evt
      */
-    private void BiggestSubtreeLauncherActionPerformed(java.awt.event.ActionEvent evt) {
-        Strand RNA1 = new Strand(SequenceRNA1.getText(), ParenthesingRNA1.getText());
-        Strand RNA2 = new Strand(SequenceRNA2.getText(), ParenthesingRNA2.getText());
+    private void biggestSubtreeLauncherActionPerformed(java.awt.event.ActionEvent evt) {
+        Strand RNA1 = new Strand(sequenceRNA1.getText(), parenthesingRNA1.getText());
+        Strand RNA2 = new Strand(sequenceRNA2.getText(), parenthesingRNA2.getText());
         Strand biggestCommonPattern = RNA1.biggestSubstrand(RNA2);
         biggestSubTreeResult.setText(Tree.strandToTree(biggestCommonPattern).toString());
     }
@@ -332,9 +359,9 @@ public class GraphicInterface extends javax.swing.JFrame {
      * Methode pour lancer la recherche de motif, elle donne le résultat dans resultPatternResearch
      * et tient compte de la checkBox ChoiceOfElementToCompare
      */
-    private void PatternResearchLaunchingButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Strand RNA1 = new Strand(SequenceRNA1.getText(), ParenthesingRNA1.getText());
-        Strand RNA2 = new Strand(SequenceRNA2.getText(), ParenthesingRNA2.getText());
+    private void patternResearchLaunchingButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Strand RNA1 = new Strand(sequenceRNA1.getText(), parenthesingRNA1.getText());
+        Strand RNA2 = new Strand(sequenceRNA2.getText(), parenthesingRNA2.getText());
         boolean useSequence = !choiceOfElementToCompare.isSelected();
         if(RNA1.contains(RNA2, useSequence)){
             resultPatternResearch.setText("The pattern of RNA2 is present in RNA1");
@@ -348,18 +375,22 @@ public class GraphicInterface extends javax.swing.JFrame {
      * Methode pour écrire manuellement la séquence et le parenthésage d' un ARN donné
      * @param RNA numero du RNA auxquels les champs à remplir sont associés
      */
-    private void SubmitRNAActionPerformed(int RNA) {
+    private void submitRNAActionPerformed(int RNA) {
         try{
+            Strand input;
             if (RNA == 1){
-                Strand input = StrandBuilder.input_brin(this.EnterSequence1.getText(), this.EnterParenthesis1.getText());
-                ParenthesingRNA1.setText(input.parenthesing);
-                SequenceRNA1.setText(input.sequence);
+                input = StrandBuilder.input_brin(this.enterSequence1.getText(), this.enterParenthesing1.getText());
+                parenthesingRNA1.setText(input.parenthesing);
+                sequenceRNA1.setText(input.sequence);
                 RNA1Tree.setText(Tree.strandToTree(input).toString());
             } else{
-                Strand input = StrandBuilder.input_brin(this.EnterSequence2.getText(), this.EnterParenthesis2.getText());
-                ParenthesingRNA2.setText(input.parenthesing);
-                SequenceRNA2.setText(input.sequence);
+                input = StrandBuilder.input_brin(this.enterSequence2.getText(), this.enterParenthesing2.getText());
+                parenthesingRNA2.setText(input.parenthesing);
+                sequenceRNA2.setText(input.sequence);
                 RNA2Tree.setText(Tree.strandToTree(input).toString());
+            }
+            if (!input.testParenthesing()) { //Le parenthésage ne correspond pas à la séquence
+                JOptionPane.showMessageDialog(this, "Bad RNA"+RNA,"Error",JOptionPane.ERROR_MESSAGE);
             }
         }
         catch(Exception e){
